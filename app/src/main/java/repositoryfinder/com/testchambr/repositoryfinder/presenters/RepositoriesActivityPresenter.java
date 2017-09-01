@@ -12,6 +12,7 @@ public class RepositoriesActivityPresenter extends BasePresenter {
 
     private final int perPage = 10;
 
+    //We define the call here to be able to cancel it later
     private Call<RepositoriesResponse> repositoriesCall;
 
     private final RepositoriesActivityPresenterListener repositoriesActivityPresenterListener;
@@ -35,6 +36,7 @@ public class RepositoriesActivityPresenter extends BasePresenter {
 
         repositoriesCall = getApiInterface().getRepositories(query, "stars", "desc", Constants.GITHUB_CLIENT_ID, Constants.GITHUB_CLIENT_SECRET, page, perPage);
 
+        //We define what is going to happen when the call will succeed or fail
         repositoriesCall.enqueue(new Callback<RepositoriesResponse>() {
             @Override
             public void onResponse(Call<RepositoriesResponse> call, Response<RepositoriesResponse> response) {

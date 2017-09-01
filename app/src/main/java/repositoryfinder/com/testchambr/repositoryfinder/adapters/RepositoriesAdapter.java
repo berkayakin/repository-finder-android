@@ -80,6 +80,7 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
         Picasso.with(getContext()).load(repository.getItemOwner().getAvatarURL()).transform(new CircleTransform()).into(holder.ownerAvatar);
     }
 
+    //Optional method
     public void swap(List<Repository> datas){
         repositories.clear();
         repositories.addAll(datas);

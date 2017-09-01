@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -45,12 +44,15 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
         ButterKnife.bind(this);
 
+        //Creating the presenter
         repositoriesActivityPresenter = new RepositoriesActivityPresenter(getApplicationContext(), this);
 
+        //Linear layout manager for the recycler view
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         repositoriesRecyclerView.setLayoutManager(linearLayoutManager);
 
+        //We define pagination by scrolling here
         RecyclerView.OnScrollListener mScrollListener = new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -64,6 +66,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
         repositoriesRecyclerView.addOnScrollListener(mScrollListener);
 
+        //Keyboard search button action
         searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -72,6 +75,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
             }
         });
 
+        //Persisting the activity state
         if(savedInstanceState != null) {
             currentQuery = savedInstanceState.getString("currentQuery");
             currentPage = savedInstanceState.getInt("currentPage");
@@ -83,10 +87,12 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
     @OnClick(R.id.searchImageButton)
     void searchButtonAction () {
+
         if(searchEditText.getVisibility() != View.VISIBLE) {
             searchEditText.setVisibility(View.VISIBLE);
             searchEditText.requestFocus();
 
+            //Show the keyboard
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(searchEditText, InputMethodManager.SHOW_IMPLICIT);
         } else {
@@ -95,6 +101,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
                 searchEditText.clearFocus();
 
+                //Hide the keyboard
                 View view = this.getCurrentFocus();
                 if (view != null) {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -108,6 +115,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
         if(willShowLoadingMessage) {
 
+            //Cancel previous toast messages
             if(loadingToast != null)
                 loadingToast.cancel();
 
@@ -121,9 +129,11 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
             repositoriesActivityPresenter.getRepositories(query, page, isNewQuery);
     }
 
+    //This method will be called when the api call will be finished successfully
     @Override
     public void repositoriesReady(RepositoriesResponse repositoriesResponse, String query, boolean isNewQuery) {
 
+        //If everything goes well, isIncompleteResults will be true
         if(!repositoriesResponse.isIncompleteResults()) {
 
             currentQuery = query;
@@ -135,6 +145,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
                 repositoriesAdapter = new RepositoriesAdapter(getApplicationContext(), repositoriesResponse.getItemsList());
                 repositoriesRecyclerView.setAdapter(repositoriesAdapter);
             } else {
+                //We are updating the current page if the api call was successful
                 currentPage++;
                 repositoriesAdapter.getRepositories().addAll(repositoriesResponse.getItemsList());
                 repositoriesAdapter.notifyDataSetChanged();
@@ -154,6 +165,7 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
         isLoadingRepositories = false;
     }
 
+    //Save the current values when the device orientation has been changed or the memory has been cleared
     @Override
     protected void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
