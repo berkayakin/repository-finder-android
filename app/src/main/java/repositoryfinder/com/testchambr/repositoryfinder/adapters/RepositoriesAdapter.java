@@ -30,6 +30,7 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
         @BindView(R.id.repositoryDescription) TextView repositoryDescription;
         @BindView(R.id.repositoryOwnerName) TextView repositoryOwnerName;
         @BindView(R.id.repositorySize) TextView repositorySize;
+        @BindView(R.id.repositoryLanguage) TextView repositoryLanguage;
 
         public MyViewHolder(View view) {
             super(view);
@@ -59,9 +60,17 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
 
         holder.repositoryName.setText(repository.getName());
 
-        holder.repositoryDescription.setText(repository.getDescription());
+        if(repository.getDescription() != null) {
+            holder.repositoryDescription.setText(repository.getDescription());
+        } else {
+            holder.repositoryDescription.setText(getContext().getResources().getString(R.string.no_description_available));
+        }
 
-        holder.repositoryOwnerName.setText(repository.getItemOwner().getLogin());
+        holder.repositoryLanguage.setText(repository.getLanguage());
+
+        String repositoryOwnerString = " " + repository.getItemOwner().getLogin();
+
+        holder.repositoryOwnerName.setText(repositoryOwnerString);
         holder.repositorySize.setText(String.valueOf(repository.getSize()));
 
         if(repository.isHasWiki() && getContext() != null) {

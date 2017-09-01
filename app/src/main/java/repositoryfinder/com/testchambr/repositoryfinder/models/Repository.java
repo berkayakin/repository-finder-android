@@ -19,6 +19,9 @@ public class Repository {
     @SerializedName("description")
     private String Description;
 
+    @SerializedName("language")
+    private String Language;
+
     @SerializedName("size")
     private int Size;
 
@@ -51,5 +54,9 @@ public class Repository {
 
     public String getDescription() {
         return Description;
+    }
+
+    public String getLanguage() {
+        return Language;
     }
 }

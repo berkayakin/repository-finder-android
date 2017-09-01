@@ -15,4 +15,5 @@
     <color name="lightGreen">#eefff4</color>
 
     <color name="repositoryTitleColor">#0366d6</color>
+    <color name="repositoryLanguageColor">#b700ff</color>
 </resources>

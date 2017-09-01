@@ -52,6 +52,29 @@
             android:layout_marginBottom="@dimen/margin_half"/>
 
         <TextView
+            android:id="@+id/repositoryLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/by_owner"
+            android:textSize="14sp"
+            android:textColor="@color/repositoryLanguageColor"
+            android:layout_below="@id/repositoryDescription"
+            android:layout_marginBottom="@dimen/margin_half"
+            android:layout_toRightOf="@id/ownerAvatar"
+            android:layout_toEndOf="@id/ownerAvatar"/>
+
+        <TextView
+            android:id="@+id/repositoryOwnerBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/by_owner"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:layout_below="@id/repositoryLanguage"
+            android:layout_toRightOf="@id/ownerAvatar"
+            android:layout_toEndOf="@id/ownerAvatar"/>
+
+        <TextView
             android:id="@+id/repositoryOwnerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,9 +83,9 @@
             android:textStyle="bold"
             android:singleLine="true"
             android:ellipsize="marquee"
-            android:layout_below="@id/repositoryDescription"
-            android:layout_toRightOf="@id/ownerAvatar"
-            android:layout_toEndOf="@id/ownerAvatar"
+            android:layout_below="@id/repositoryLanguage"
+            android:layout_toRightOf="@id/repositoryOwnerBy"
+            android:layout_toEndOf="@id/repositoryOwnerBy"
             android:layout_toLeftOf="@id/repositorySize"
             android:layout_toStartOf="@id/repositorySize"/>
 
@@ -75,7 +98,7 @@
             android:singleLine="true"
             android:ellipsize="marquee"
             android:textColor="@color/lightGray"
-            android:layout_below="@id/repositoryDescription"
+            android:layout_below="@id/repositoryLanguage"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
 
