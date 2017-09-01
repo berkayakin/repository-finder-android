@@ -3,7 +3,7 @@
     <string name="error_msg">An error has occurred</string>
     <string name="incomplete_results">Incomplete results</string>
     <string name="loading">Loading</string>
-    <string name="search_repository">Search repository</string>
+    <string name="search_repository">Search repositories</string>
     <string name="no_description_available">No description available</string>
     <string name="by_owner">by</string>
     <string name="size">Size</string>
