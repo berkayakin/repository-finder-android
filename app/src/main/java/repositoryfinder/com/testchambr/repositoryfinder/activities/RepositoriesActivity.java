@@ -61,6 +61,11 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
 
         repositoriesRecyclerView.addOnScrollListener(mScrollListener);
 
+        if(savedInstanceState != null) {
+            currentQuery = savedInstanceState.getString("currentQuery");
+            currentPage = savedInstanceState.getInt("currentPage");
+        }
+
         //Load repositories including word tetris as default
         getRepositories(currentQuery, currentPage, true, false);
     }
@@ -106,11 +111,16 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
     }
 
     @Override
-    public void repositoriesReady(RepositoriesResponse repositoriesResponse, boolean isNewQuery) {
+    public void repositoriesReady(RepositoriesResponse repositoriesResponse, String query, boolean isNewQuery) {
 
         if(!repositoriesResponse.isIncompleteResults()) {
 
+            currentQuery = query;
+
             if(isNewQuery) {
+
+                currentPage = 1;
+
                 repositoriesAdapter = new RepositoriesAdapter(getApplicationContext(), repositoriesResponse.getItemsList());
                 repositoriesRecyclerView.setAdapter(repositoriesAdapter);
             } else {
@@ -131,6 +141,14 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
         Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.error_msg), Toast.LENGTH_SHORT).show();
 
         isLoadingRepositories = false;
+    }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putCharSequence("currentQuery", currentQuery);
+        outState.putInt("currentPage", currentPage);
     }
 
     @Override

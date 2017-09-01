@@ -17,7 +17,7 @@ public class RepositoriesActivityPresenter extends BasePresenter {
     private final RepositoriesActivityPresenterListener repositoriesActivityPresenterListener;
 
     public interface RepositoriesActivityPresenterListener {
-        void repositoriesReady(RepositoriesResponse repositoriesResponse, boolean isNewQuery);
+        void repositoriesReady(RepositoriesResponse repositoriesResponse, String query, boolean isNewQuery);
         void repositoriesFailed();
     }
 
@@ -27,7 +27,7 @@ public class RepositoriesActivityPresenter extends BasePresenter {
         createApiInterface();
     }
 
-    public void getRepositories (String query, int page, final boolean isNewQuery) {
+    public void getRepositories (final String query, int page, final boolean isNewQuery) {
 
         //Cancel previous call
         if(repositoriesCall != null)
@@ -41,7 +41,7 @@ public class RepositoriesActivityPresenter extends BasePresenter {
                 RepositoriesResponse repositoriesResponse = response.body();
 
                 if(repositoriesResponse != null)
-                    repositoriesActivityPresenterListener.repositoriesReady(repositoriesResponse, isNewQuery);
+                    repositoriesActivityPresenterListener.repositoriesReady(repositoriesResponse, query, isNewQuery);
             }
 
             @Override
