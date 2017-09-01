@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context="repositoryfinder.com.testchambr.repositoryfinder.activities.RepositoriesActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageButton
+                android:id="@+id/searchImageButton"
+                android:contentDescription="@string/search_repository"
+                android:background="@null"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:padding="18dp"
+                android:tint="@color/lightGray"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_search"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:maxLines="1"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:hint="@string/search_repository"
+                android:textColorHint="@color/lightGray"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/searchImageButton"
+                android:layout_toStartOf="@id/searchImageButton"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_repositories" />
+
+</android.support.design.widget.CoordinatorLayout>
