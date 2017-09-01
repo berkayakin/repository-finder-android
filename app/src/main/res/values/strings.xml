@@ -6,4 +6,6 @@
     <string name="search_repository">Search repository</string>
     <string name="no_description_available">No description available</string>
     <string name="by_owner">by</string>
+    <string name="size">Size</string>
+    <string name="loading_more_content">Loading more content</string>
 </resources>

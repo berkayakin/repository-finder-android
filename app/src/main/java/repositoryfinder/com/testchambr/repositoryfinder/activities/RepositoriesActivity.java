@@ -119,7 +119,16 @@ public class RepositoriesActivity extends AppCompatActivity implements Repositor
             if(loadingToast != null)
                 loadingToast.cancel();
 
-            loadingToast = Toast.makeText(getApplicationContext(), getApplicationContext().getResources().getString(R.string.loading), Toast.LENGTH_SHORT);
+            String toastMessage;
+
+            if(isNewQuery) {
+                toastMessage = getApplicationContext().getResources().getString(R.string.loading);
+
+            } else {
+                toastMessage = getApplicationContext().getResources().getString(R.string.loading_more_content);
+            }
+
+            loadingToast = Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT);
             loadingToast.show();
         }
 

@@ -94,7 +94,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textStyle="italic"
             android:singleLine="true"
             android:ellipsize="marquee"
             android:textColor="@color/lightGray"

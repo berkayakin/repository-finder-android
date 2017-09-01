@@ -66,12 +66,19 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
             holder.repositoryDescription.setText(getContext().getResources().getString(R.string.no_description_available));
         }
 
-        holder.repositoryLanguage.setText(repository.getLanguage());
+        if(repository.getLanguage() != null) {
+            holder.repositoryLanguage.setText(repository.getLanguage());
+        } else {
+            //Hide the language information if it is null
+            holder.repositoryLanguage.setVisibility(View.GONE);
+        }
 
         String repositoryOwnerString = " " + repository.getItemOwner().getLogin();
 
         holder.repositoryOwnerName.setText(repositoryOwnerString);
-        holder.repositorySize.setText(String.valueOf(repository.getSize()));
+
+        String repositorySizeString = getContext().getResources().getString(R.string.size) + ": " + repository.getSize();
+        holder.repositorySize.setText(repositorySizeString);
 
         if(repository.isHasWiki() && getContext() != null) {
             holder.itemView.setBackgroundColor(getContext().getResources().getColor(R.color.lightGreen));
