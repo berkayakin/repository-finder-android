@@ -21,6 +21,10 @@ import repositoryfinder.com.testchambr.repositoryfinder.adapters.RepositoriesAda
 import repositoryfinder.com.testchambr.repositoryfinder.models.RepositoriesResponse;
 import repositoryfinder.com.testchambr.repositoryfinder.presenters.RepositoriesActivityPresenter;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public class RepositoriesActivity extends AppCompatActivity implements RepositoriesActivityPresenter.RepositoriesActivityPresenterListener {
 
     RepositoriesActivityPresenter repositoriesActivityPresenter;

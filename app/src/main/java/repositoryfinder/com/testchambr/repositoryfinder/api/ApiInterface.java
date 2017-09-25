@@ -5,6 +5,10 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public interface ApiInterface {
 
     @GET("/search/repositories")

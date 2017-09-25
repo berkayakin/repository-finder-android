@@ -1,5 +1,9 @@
 package repositoryfinder.com.testchambr.repositoryfinder.utils;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public class Constants {
 
     public static final String GITHUB_CLIENT_ID = "f5b510e134e8ebaa2898";

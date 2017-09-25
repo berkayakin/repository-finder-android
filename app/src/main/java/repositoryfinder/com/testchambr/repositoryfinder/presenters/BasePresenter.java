@@ -5,6 +5,10 @@ import android.content.Context;
 import repositoryfinder.com.testchambr.repositoryfinder.api.ApiClient;
 import repositoryfinder.com.testchambr.repositoryfinder.api.ApiInterface;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public class BasePresenter {
     private Context context;
     private ApiInterface apiInterface;

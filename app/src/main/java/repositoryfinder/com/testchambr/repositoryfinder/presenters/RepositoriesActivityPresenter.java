@@ -8,6 +8,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public class RepositoriesActivityPresenter extends BasePresenter {
 
     private final int perPage = 10;

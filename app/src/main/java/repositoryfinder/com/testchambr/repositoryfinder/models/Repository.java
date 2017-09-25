@@ -2,6 +2,10 @@ package repositoryfinder.com.testchambr.repositoryfinder.models;
 
 import com.google.gson.annotations.SerializedName;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public class Repository {
 
     @SerializedName("id")

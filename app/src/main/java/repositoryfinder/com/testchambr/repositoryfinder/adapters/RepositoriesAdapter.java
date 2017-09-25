@@ -19,6 +19,10 @@ import repositoryfinder.com.testchambr.repositoryfinder.R;
 import repositoryfinder.com.testchambr.repositoryfinder.models.Repository;
 import repositoryfinder.com.testchambr.repositoryfinder.transformations.CircleTransform;
 
+/*
+ * Coded by Berkay AKIN
+ */
+
 public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapter.MyViewHolder> {
 
     private List<Repository> repositories = new ArrayList<>();
